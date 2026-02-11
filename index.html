@@ -8,11 +8,13 @@
 <style>
 :root{
   --gold:#ffd28a;
-  --panel:rgba(12,12,18,.72);
+  --panel:rgba(12,12,18,.74);
   --border:rgba(255,255,255,.18);
   --text:#f4f2ee;
-  --muted:rgba(244,242,238,.75);
+  --muted:rgba(244,242,238,.78);
 }
+
+*{ box-sizing:border-box; }
 
 /* ===== BACKGROUND ===== */
 body{
@@ -20,53 +22,63 @@ body{
   min-height:100vh;
   color:var(--text);
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  line-height:1.5;
   background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
-    url("bg.png") center/cover no-repeat fixed;
+    linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.84)),
+    url("bg.png") center/cover no-repeat;
+}
+
+@media (min-width:900px){
+  body{ background-attachment: fixed; }
 }
 
 /* ===== LAYOUT ===== */
 .wrapper{
   max-width:900px;
-  margin:auto;
-  padding:20px;
+  margin:0 auto;
+  padding:16px;
 }
 
 .panel{
   background:var(--panel);
   border:1px solid var(--border);
   border-radius:18px;
-  padding:22px;
-  backdrop-filter: blur(10px);
+  padding:18px;
+  backdrop-filter:blur(10px);
 }
 
 /* ===== HEADER ===== */
-.header-line{
+.header-line,
+h1,
+.icon-row{
   text-align:center;
-  font-weight:600;
-  letter-spacing:.6px;
+}
+
+.header-line{
+  font-weight:700;
   color:var(--gold);
-  margin-bottom:8px;
+  margin-bottom:10px;
+  font-size:clamp(14px,3vw,16px);
 }
 
 h1{
-  text-align:center;
-  margin:6px 0 16px;
-  font-size:30px;
-  letter-spacing:1px;
+  margin:6px 0 14px;
+  font-size:clamp(22px,4.8vw,30px);
 }
 
-/* ===== ICON ROW ===== */
 .icon-row{
   display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:12px;
-  margin-bottom:20px;
-  font-size:14px;
+  flex-direction:column;
+  gap:10px;
+  margin:10px 0 18px;
+  color:var(--muted);
 }
 
-/* ===== CONTENT ===== */
+/* ===== RULES AREA ===== */
+.rules{
+  text-align:left;
+}
+
 .section{
   margin-top:18px;
 }
@@ -74,27 +86,38 @@ h1{
 .section h2{
   color:var(--gold);
   margin-bottom:8px;
+  font-size:clamp(18px,4vw,22px);
 }
 
 ul{
-  padding-left:20px;
+  padding-left:18px;
+  margin:0;
 }
+
+li{ margin:8px 0; }
+
+p{ margin-top:10px; }
 
 .role{
   margin:10px 0;
 }
 
+/* ===== FOOTER ===== */
 .footer{
   text-align:center;
-  margin-top:22px;
+  margin-top:18px;
   font-style:italic;
   color:var(--muted);
+}
+
+/* ===== MOBILE POLISH ===== */
+@media (max-width:480px){
+  .panel{ padding:16px; }
 }
 </style>
 </head>
 
 <body>
-
 <div class="wrapper">
 <div class="panel">
 
@@ -105,23 +128,22 @@ Nocoj pozabi na svoje zemeljsko življenje — nocoj si v Valhalli — nocoj si 
 <h1>⚔️ VALHALLA: LOKI MED KLANI</h1>
 
 <div class="icon-row">
-😈 Med vami se skriva Loki &nbsp;|&nbsp;
-📯 Ritual Roga - mini igra &nbsp;|&nbsp;
-🍖 Jedača = gorivo za telo &nbsp;|&nbsp;
-🍻 Pitje = gorivo za dušo &nbsp;|&nbsp;
-🃏 Ne kazite kartic
+  <div>😈 Med vami se skriva Loki – lagano in brez pritiska med pogovorom probaj ugotoviti kdo je Loki.</div>
+  <div>📯 Ritual Roga – kratka mini igra, vsake pol ure za dvig motivacije in kozarcev.</div>
 </div>
+
+<div class="rules">
 
 <div class="section">
 <h2>1) Osnovna pravila</h2>
 <ul>
-<li>Ne kazite kartic in ne razkrivajte naziva ali teme.</li>
+<li>Ne kažite kartic in ne razkrivajte naziva ali teme.</li>
 <li>Loki je med vami — nima fraze in ne pozna teme → improvizira.</li>
 <li>O temi ne govorite na glas. Kaže se le skozi fraze.</li>
 <li>Fraza je primer stavka na vašem listku — z njo skušate ugotoviti, kdo je Loki.</li>
 <li>Sumničite, sprašujte, uživajte. Po dveh urah pade sodba.</li>
 </ul>
-<p><b>Cilj:</b> vaš klan pravilno imenuje Lokija. Če zgrešite → pijete. Če Loki ostane skrit → Loki zmaga.</p>
+<p><b>Cilj:</b> vaš klan pravilno imenuje Lokija. Če zgrešite → Loki zmaga.</p>
 </div>
 
 <div class="section">
@@ -129,7 +151,7 @@ Nocoj pozabi na svoje zemeljsko življenje — nocoj si v Valhalli — nocoj si 
 <ul>
 <li>Host reče: <b>“Naj se rog poda med klani!”</b></li>
 <li>Zaigra glasba → rog se hitro poda.</li>
-<li>Ko se glasba ustavi: kdor drži rog, vstane in <b>najprej pove svoj <b>NAZIV</b>, nato izreče svojo FRAZO</b> (primer stavka s kartice).</li>
+<li>Ko se glasba ustavi: kdor drži rog, vstane in <b>najprej pove svoj NAZIV</b>, nato izreče svojo <b>FRAZO</b>.</li>
 <li>Nato izvede mini izziv glede na vlogo.</li>
 </ul>
 </div>
@@ -137,15 +159,15 @@ Nocoj pozabi na svoje zemeljsko življenje — nocoj si v Valhalli — nocoj si 
 <div class="section">
 <h2>3) Kaj naredi kdo</h2>
 
-<div class="role">⚔️ <b>Bojevnik</b> — izzove nekoga in izbere: “staring contest” ali duel z meči. Pred dvobojem pove bojni krik. Poraženčev klan pije.</div>
+<div class="role">⚔️ <b>Bojevnik</b> — <b>izzove nekoga</b> in izbere: “staring contest” ali duel z meči. Pred dvobojem pove bojni krik. Poraženčev klan pije.</div>
 
-<div class="role">🍻 <b>Skald</b> — pove zdravico (1–2 stavka). Primer: "Na dober ulov in še boljši raid!" Pijejo vsi!</div>
+<div class="role">🍻 <b>Skald</b> — pove zdravico (1–2 stavka). Primer: “Na dober ulov in še boljši raid!” Pijejo vsi!</div>
 
-<div class="role">🐗 <b>Lovec</b> — pove lovsko zgodbo ali laž. Primer: "Z eno puščico sem ujel dva zajca.." Kdor ne verjame — pije.</div> 
+<div class="role">🐗 <b>Lovec</b> — pove lovsko zgodbo ali laž. Primer: “Z eno puščico sem ujel dva zajca..” Kdor ne verjame — pije.</div>
 
-<div class="role">🔮 <b>Seer</b> — pove prerokbo za nekoga. Primer: "Vsaj dva klana bosta izgubila.. " Prerokovani pije.</div>
+<div class="role">🔮 <b>Seer</b> — pove prerokbo za nekoga. Primer: “Vsaj dva klana bosta izgubila..” Prerokovani pije.</div>
 
-<div class="role">📯 <b>Glasnik</b> — pove govorico, ki zaseje dvom. Primer: “nekdo govori preveč gladko…”</div>
+<div class="role">📯 <b>Glasnik</b> — pove govorico, ki zaseje dvom. Primer: “Nekdo govori preveč gladko…”</div>
 
 <div class="role">😈 <b>Loki</b> — improvizira. Ne sme izdati, da nima teme ali fraze.</div>
 </div>
@@ -159,13 +181,16 @@ Vsak klan pove: <b>“Naš Loki je …”</b><br>
 </p>
 </div>
 
+</div>
+
 <div class="footer">Skål. ⚔️🍻</div>
 
 </div>
 </div>
-
 </body>
 </html>
+
+
 
 
 
