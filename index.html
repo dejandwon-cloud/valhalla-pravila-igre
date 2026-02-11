@@ -1,214 +1,170 @@
 <!doctype html>
 <html lang="sl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Valhalla – Loki med klani</title>
-  <style>
-    :root{
-      --bg:#07070a;
-      --panel:rgba(10,10,14,.72);
-      --stroke:rgba(255,255,255,.14);
-      --text:#f4f2ee;
-      --muted:rgba(244,242,238,.75);
-      --gold:rgba(255,214,140,.95);
-      --accent:rgba(180,220,255,.9);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(255,214,140,.10), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(180,220,255,.10), transparent 60%),
-        radial-gradient(800px 700px at 50% 90%, rgba(255,255,255,.06), transparent 60%),
-        linear-gradient(180deg, #050507, #0a0a0f 55%, #050507);
-      color:var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      letter-spacing:.2px;
-    }
-    .wrap{max-width:920px;margin:0 auto;padding:20px}
-    .hero{
-      position:relative;
-      border:1px solid var(--stroke);
-      background:var(--panel);
-      backdrop-filter: blur(10px);
-      border-radius:18px;
-      padding:20px 18px;
-      overflow:hidden;
-    }
-    .runes{
-      position:absolute;inset:-20px;
-      opacity:.12;
-      background-image:
-        repeating-linear-gradient(135deg, rgba(255,255,255,.35) 0 1px, transparent 1px 20px);
-      mask-image: radial-gradient(circle at 40% 10%, black 0 55%, transparent 70%);
-      pointer-events:none;
-    }
-    h1{margin:0 0 6px;font-size:22px;letter-spacing:.8px}
-    .sub{margin:0;color:var(--muted);font-size:14px}
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:12px;
-      margin-top:14px;
-    }
-    @media(min-width:760px){
-      .grid{grid-template-columns: 1fr 1fr}
-    }
-    .card{
-      border:1px solid var(--stroke);
-      background:rgba(0,0,0,.25);
-      border-radius:16px;
-      padding:14px;
-    }
-    .card h2{
-      margin:0 0 8px;
-      font-size:15px;
-      letter-spacing:.5px;
-      color:var(--gold);
-    }
-    .list{margin:0;padding-left:18px;color:var(--text)}
-    .list li{margin:6px 0;color:var(--text)}
-    .muted{color:var(--muted)}
-    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-    .pill{
-      border:1px solid var(--stroke);
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:12px;
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      white-space:nowrap;
-    }
-    .callout{
-      margin-top:12px;
-      border:1px dashed rgba(255,214,140,.35);
-      background:rgba(255,214,140,.06);
-      border-radius:14px;
-      padding:12px;
-      color:var(--text);
-    }
-    .callout b{color:var(--gold)}
-    .footer{
-      margin-top:14px;
-      text-align:center;
-      color:var(--muted);
-      font-size:12px;
-    }
-    .big{
-      font-size:14px;
-      line-height:1.45;
-    }
-    .role{
-      display:grid;
-      grid-template-columns: 22px 1fr;
-      gap:8px;
-      align-items:start;
-      margin:8px 0;
-    }
-    .icon{opacity:.95}
-    code{
-      color:var(--accent);
-      background:rgba(180,220,255,.08);
-      border:1px solid rgba(180,220,255,.18);
-      padding:2px 6px;border-radius:10px;
-      font-size:12px;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valhalla – Loki med klani</title>
+
+<style>
+:root{
+  --gold:#ffd28a;
+  --panel:rgba(12,12,18,.72);
+  --border:rgba(255,255,255,.18);
+  --text:#f4f2ee;
+  --muted:rgba(244,242,238,.75);
+}
+
+/* ===== BACKGROUND ===== */
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+    url("bg.png") center/cover no-repeat fixed;
+}
+
+/* ===== LAYOUT ===== */
+.wrapper{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+.panel{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== HEADER ===== */
+.header-line{
+  text-align:center;
+  font-weight:600;
+  letter-spacing:.6px;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+
+h1{
+  text-align:center;
+  margin:6px 0 16px;
+  font-size:30px;
+  letter-spacing:1px;
+}
+
+/* ===== ICON ROW ===== */
+.icon-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-bottom:20px;
+  font-size:14px;
+}
+
+/* ===== CONTENT ===== */
+.section{
+  margin-top:18px;
+}
+
+.section h2{
+  color:var(--gold);
+  margin-bottom:8px;
+}
+
+ul{
+  padding-left:20px;
+}
+
+.role{
+  margin:10px 0;
+}
+
+.footer{
+  text-align:center;
+  margin-top:22px;
+  font-style:italic;
+  color:var(--muted);
+}
+</style>
 </head>
+
 <body>
-  <div class="wrap">
-    <div class="hero">
-      <div class="runes"></div>
-      <h1>VALHALLA: LOKI MED KLANI</h1>
-      <p class="sub">Hitro pravilo: kratko, zabavno, brez ubijanja flowa. Loki improvizira. Vi opazujete.</p>
 
-      <div class="pillrow">
-        <div class="pill">⏱️ 2 uri free-play</div>
-        <div class="pill">🔔 Zvon + rog ritual</div>
-        <div class="pill">🍻 Pitje = gorivo</div>
-        <div class="pill">🃏 Ne kazite kartic</div>
-      </div>
+<div class="wrapper">
+<div class="panel">
 
-      <div class="grid">
-        <div class="card">
-          <h2>1) Osnovna pravila (30 sekund)</h2>
-          <ul class="list big">
-            <li><b>Ne kazite kartic.</b> <span class="muted">Ne razkrivaj naziva/teme direktno.</span></li>
-            <li><b>Ne govorite na glas o temi.</b> Tema je samo “v ozadju” fraz.</li>
-            <li><b>Loki je med vami.</b> Loki <b>nima</b> fraze/teme → improvizira.</li>
-            <li>Sumničite, sprašujte, mešajte se med klani.</li>
-          </ul>
-          <div class="callout">
-            <b>Cilj:</b> vaš klan ob koncu pravilno imenuje Lokija. Če zgrešite → pijete.
-          </div>
-        </div>
+<div class="header-line">
+Nocoj pozabi na svoje zemeljsko življenje — nocoj si v Valhalli — nocoj si Viking.
+</div>
 
-        <div class="card">
-          <h2>2) Rog ritual (mini dogodek)</h2>
-          <p class="big muted" style="margin:0 0 10px">
-            Host sproži krog. Traja ~30–60 sekund. Ne razvleče zabave.
-          </p>
-          <ul class="list big">
-            <li>Host reče: <code>“Naj se rog poda med klani!”</code></li>
-            <li>Zaigra glasba <span class="muted">(20–30 s)</span> → rog gre hitro naprej.</li>
-            <li>Ko zazvoni <b>zvonec</b> → <b>kdor drži rog</b>, vstane in pove <b>naziv</b>.</li>
-            <li>Potem naredi mini izziv po nazivu (spodaj).</li>
-          </ul>
-        </div>
+<h1>⚔️ VALHALLA: LOKI MED KLANI</h1>
 
-        <div class="card">
-          <h2>3) Kaj naredi kdo (10–30 s)</h2>
+<div class="icon-row">
+😈 Med vami se skriva Loki &nbsp;|&nbsp;
+📯 Ritual Roga ob zvoncu &nbsp;|&nbsp;
+🍖 Jedača = gorivo za telo &nbsp;|&nbsp;
+🍻 Pitje = gorivo za dušo &nbsp;|&nbsp;
+🃏 Ne kazite kartic
+</div>
 
-          <div class="role big">
-            <div class="icon">⚔️</div>
-            <div><b>Bojevnik</b> — izzove nekoga: bojni krik / arm-wrestling / “staring contest” / met kocke.</div>
-          </div>
+<div class="section">
+<h2>1) Osnovna pravila</h2>
+<ul>
+<li>Ne kazite kartic in ne razkrivajte naziva ali teme.</li>
+<li>Loki je med vami — nima fraze in ne pozna teme → improvizira.</li>
+<li>O temi ne govorite na glas. Kaže se le skozi fraze.</li>
+<li>Fraza je primer stavka na vašem listku — z njo skušate ugotoviti, kdo je Loki.</li>
+<li>Sumničite, sprašujte, uživajte. Po dveh urah pade sodba.</li>
+</ul>
+<p><b>Cilj:</b> vaš klan pravilno imenuje Lokija. Če zgrešite → pijete. Če Loki ostane skrit → Loki zmaga.</p>
+</div>
 
-          <div class="role big">
-            <div class="icon">🍻</div>
-            <div><b>Skald</b> — pove zdravico (1–2 stavka). Vsi dvignejo kozarce.</div>
-          </div>
+<div class="section">
+<h2>2) Rog ritual (mini igra)</h2>
+<ul>
+<li>Host reče: <b>“Naj se rog poda med klani!”</b></li>
+<li>Zaigra glasba → rog se hitro poda.</li>
+<li>Ko se glasba ustavi: kdor drži rog, vstane in <b>najprej izreče svojo FRAZO</b> (primer stavka s kartice), nato pove svoj <b>NAZIV</b>.</li>
+<li>Nato izvede mini izziv glede na vlogo.</li>
+</ul>
+</div>
 
-          <div class="role big">
-            <div class="icon">🐗</div>
-            <div><b>Lovec</b> — pove lovsko zgodbo / “laž” (1–2 stavka). Če se folk smeje → nekdo pije.</div>
-          </div>
+<div class="section">
+<h2>3) Kaj naredi kdo</h2>
 
-          <div class="role big">
-            <div class="icon">🔮</div>
-            <div><b>Seer</b> — pove prerokbo za nekoga (1 stavek). Prerokovani pije.</div>
-          </div>
+<div class="role">⚔️ <b>Bojevnik</b> — izzove nekoga in izbere: bojni krik, “staring contest” ali duel z meči. Poraženčev klan pije.</div>
 
-          <div class="role big">
-            <div class="icon">📯</div>
-            <div><b>Glasnik</b> — pove govorico (1 stavek), ki zaseje dvom: “nekdo govori preveč gladko…”</div>
-          </div>
+<div class="role">🍻 <b>Skald</b> — pove zdravico (1–2 stavka).</div>
 
-          <div class="role big">
-            <div class="icon">😈</div>
-            <div><b>Loki</b> — improvizira. Ne sme razkriti, da nima teme/fraze.</div>
-          </div>
-        </div>
+<div class="role">🐗 <b>Lovec</b> — pove lovsko zgodbo ali laž. Kdor ne verjame — pije.</div>
 
-        <div class="card">
-          <h2>4) Final (po ~2 urah)</h2>
-          <ul class="list big">
-            <li>Host pozvoni: <code>“Klani, čas je za sodbo!”</code></li>
-            <li>Vsak klan izbere <b>eno osebo</b>, ki jo obtoži: <b>“Naš Loki je …”</b></li>
-            <li>Če zadenete → Loki pije / izziv. Če zgrešite → pije klan.</li>
-          </ul>
-          <div class="callout">
-            <b>Nasvet:</b> Rog ritual narediš 3–4× max (npr. 20:30, 21:00, 21:30, 22:00 final).
-          </div>
-        </div>
-      </div>
+<div class="role">🔮 <b>Seer</b> — pove prerokbo za nekoga. Prerokovani pije.</div>
 
-      <div class="footer">
-        Skål. Ne kompliciraj. Naj legenda teče sama. ⚔️🍻
-      </div>
-    </div>
-  </div>
+<div class="role">📯 <b>Glasnik</b> — pove govorico, ki zaseje dvom.</div>
+
+<div class="role">😈 <b>Loki</b> — improvizira. Ne sme izdati, da nima teme ali fraze.</div>
+</div>
+
+<div class="section">
+<h2>4) Končna sodba</h2>
+<p>
+Host pozvoni: <b>“Klani, čas je za sodbo!”</b><br>
+Vsak klan pove: <b>“Naš Loki je …”</b><br>
+Če zadenejo → Loki pije ali dobi izziv. Če zgrešijo → pije klan.
+</p>
+</div>
+
+<div class="footer">Skål. ⚔️🍻</div>
+
+</div>
+</div>
+
 </body>
 </html>
+
+
